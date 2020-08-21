@@ -4,7 +4,7 @@ __Instructions:-__
 
 Download your Orders from WooCommerce using the Exporter. 
 
-Remember the date must be by completed date and selected completed only.
+Remember the date must be by completed date and select completed only.
 
 Copy your exported file to :- __C:\woocommerce\exports__
 
