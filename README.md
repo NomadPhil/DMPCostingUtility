@@ -1,7 +1,8 @@
-# DMPCostingUtility
-An order costing utility for orders exported from WooCommerce.
+# DMP Costing Utility
 
-Download your Orders from WooComerce using the Exporter. 
+__Instructions:-__
+
+Download your Orders from WooCommerce using the Exporter. 
 
 Remember the date must be by completed date and selected completed only.
 
