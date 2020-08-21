@@ -12,6 +12,6 @@ __Important:__ Delete all columns between "Last Name (Billing" and "SKU", save a
 
 Run the utility and select cost.
 
-If successfully costed a new file will be generated in:- __C:\woocommerce\costedorders__
+If successfully costed a new file for the costed orders will be generated in:- __C:\woocommerce\costedorders__
 
 Your exported file will be moved to another directory:- __C:\woocommerce\costedexports__
