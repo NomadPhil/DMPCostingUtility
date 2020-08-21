@@ -1,7 +1,7 @@
 # DMPCostingUtility
 An order costing utility for orders exported from WooCommerce.
 
-Download your Orders from WooComerce Exported. 
+Download your Orders from WooComerce using the Exporter. 
 
 Remember the date must be by completed date and selected completed only.
 
