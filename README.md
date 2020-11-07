@@ -8,7 +8,7 @@ Remember the date must be by completed date and select completed only.
 
 Copy your exported file to :- __C:\woocommerce\exports__
 
-__Important:__ Delete all columns between "Last Name (Billing)" and "SKU", save and __close__ the file.
+__Important:__ It is no longer necessary to delete columns in the csv file before importing it.
 
 Run the utility and select cost.
 
