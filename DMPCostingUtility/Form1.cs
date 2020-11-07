@@ -24,9 +24,46 @@ namespace DMPCostingUtility
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
+            if (FormHasErrors(out double baseCost, out double perItemCost))
+                return;
+
+            var fileProcessor = GetFileProcessor(baseCost, perItemCost);
+
+            string[] filesCosted = fileProcessor.ProcessFiles();
+
+            MessageBox.Show(GetFileProcessingMessage(filesCosted));
+        }
+
+        private FileProcessor GetFileProcessor(double baseCost, double perItemCost)
+        {
+            var fileProcessor = new FileProcessor(
+                new FileProcessorSettings
+                {
+                    ImportDirectory = txtImportDirectory.Text,
+                    ExportDirectory = txtExportDirectory.Text,
+                    ProcessedDirectory = txtProcessedDirectory.Text
+                },
+                new OrderCoster(
+                    new OrderCosterSettings
+                    {
+                        BaseCost = baseCost,
+                        PerItemCost = perItemCost
+                    }
+                ),
+                new CostedOrderExporter(
+                    new CostedOrderExporterSettings
+                    {
+                        ExportDirectory = txtExportDirectory.Text
+                    }
+                ));
+            return fileProcessor;
+        }
+
+        private bool FormHasErrors(out double baseCost, out double perItemCost)
+        {
+            baseCost = 0;
+            perItemCost = 0;
             string baseCostText = txtBaseCost.Text;
-            double baseCost = 0;
-            double perItemCost = 0;
             string perItemCostText = txtPerItemCost.Text;
             string importDirectory = txtImportDirectory.Text;
             string exportDirectory = txtExportDirectory.Text;
@@ -79,32 +116,11 @@ namespace DMPCostingUtility
                 hasErrors = true;
             }
 
-            if (hasErrors)
-                return;
+            return hasErrors;
+        }
 
-            var fileProcessor = new FileProcessor(
-                new FileProcessorSettings
-                {
-                    ImportDirectory = importDirectory,
-                    ExportDirectory = exportDirectory,
-                    ProcessedDirectory = processedDirectory
-                },
-                new OrderCoster(
-                    new OrderCosterSettings
-                    {
-                        BaseCost =  baseCost,
-                        PerItemCost = perItemCost
-                    }
-                    ),
-                new CostedOrderExporter(
-                    new CostedOrderExporterSettings
-                    {
-                        ExportDirectory = exportDirectory
-                    }
-                    ));
-
-            string[] filesCosted = fileProcessor.ProcessFiles();
-
+        private string GetFileProcessingMessage(string[] filesCosted)
+        {
             var messageBuilder = new StringBuilder();
 
             if (filesCosted.Length > 0)
@@ -122,7 +138,7 @@ namespace DMPCostingUtility
                 messageBuilder.AppendLine("If there are files there to process, make sure they are not open in a spreadsheet and they are in the correct format.");
             }
 
-            MessageBox.Show(messageBuilder.ToString());
+            return messageBuilder.ToString();
         }
     }
 }
