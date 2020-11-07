@@ -64,9 +64,11 @@
     </Compile>
     <Compile Include="ICostedOrderExporter.cs" />
     <Compile Include="IOrderCoster.cs" />
+    <Compile Include="IOrderImporter.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderCoster.cs" />
     <Compile Include="OrderCosterSettings.cs" />
+    <Compile Include="OrderImporter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

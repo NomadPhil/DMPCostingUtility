@@ -1,8 +1,6 @@
-﻿using FileHelpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace DMPCostingUtility
 {
@@ -11,15 +9,18 @@ namespace DMPCostingUtility
         private readonly FileProcessorSettings _settings;
         private readonly IOrderCoster _orderCoster;
         private readonly ICostedOrderExporter _costedOrderExporter;
+        private readonly IOrderImporter _orderImporter;
 
         public FileProcessor(
             FileProcessorSettings settings, 
             IOrderCoster orderCoster,
-            ICostedOrderExporter costedOrderExporter)
+            ICostedOrderExporter costedOrderExporter,
+            IOrderImporter orderImporter)
         {
             _settings = settings;
             _orderCoster = orderCoster;
             _costedOrderExporter = costedOrderExporter;
+            _orderImporter = orderImporter;
         }
 
         public string[] ProcessFiles()
@@ -50,7 +51,7 @@ namespace DMPCostingUtility
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ProcessFiles(): Exception raised whilst processing file.", ex);
+                Console.WriteLine($@"ProcessFiles(): Exception raised whilst processing file. {ex}", ex);
             }
 
             return processedFiles;
@@ -75,10 +76,8 @@ namespace DMPCostingUtility
             return validFiles.ToArray();
         }
 
-        private int MoveToFolder(string[] validFiles)
+        private void MoveToFolder(string[] validFiles)
         {
-            int processedFilesCount = 0;
-
             // Process the list of files found in the directory.
             foreach (string filePathName in validFiles)
             {
@@ -103,22 +102,14 @@ namespace DMPCostingUtility
                     }
 
                     File.Move(filePathName, destinationFile);
-
-                    processedFilesCount++;
                 }
             }
-
-            return processedFilesCount;
         }
 
         public int ProcessFile(string validFile)
         {
             // Import orders              
-            var engine = new FileHelperEngine<Order>();
-
-            engine.ErrorManager.ErrorMode = ErrorMode.ThrowException;
-
-            List<Order> importRecords = engine.ReadFile(validFile).ToList();
+            Order[] importRecords = _orderImporter.ImportFile(validFile);
 
             CostedOrder[] costed = _orderCoster.ProcessOrders(importRecords);
 

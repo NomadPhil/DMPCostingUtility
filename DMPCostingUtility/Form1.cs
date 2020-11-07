@@ -55,7 +55,8 @@ namespace DMPCostingUtility
                     {
                         ExportDirectory = txtExportDirectory.Text
                     }
-                ));
+                ),
+                new OrderImporter());
             return fileProcessor;
         }
 

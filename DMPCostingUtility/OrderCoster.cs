@@ -12,7 +12,7 @@ namespace DMPCostingUtility
             _settings = settings;
         }
 
-        public CostedOrder[] ProcessOrders(List<Order> orders)
+        public CostedOrder[] ProcessOrders(Order[] orders)
         {
             var costedOrders = new Dictionary<string, CostedOrder>();
 
@@ -34,7 +34,8 @@ namespace DMPCostingUtility
                             {
                                 OrderDate = order.OrderDate,
                                 OrderNumber = order.OrderNumber,
-                                NumberOfProducts = 1
+                                NumberOfProducts = 1,
+                                OrderShippingAmount = order.OrderShippingAmount
                             });
                     }
                 }

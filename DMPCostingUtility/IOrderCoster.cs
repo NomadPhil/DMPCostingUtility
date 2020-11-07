@@ -4,6 +4,6 @@ namespace DMPCostingUtility
 {
     interface IOrderCoster
     {
-        CostedOrder[] ProcessOrders(List<Order> orders);
+        CostedOrder[] ProcessOrders(Order[] orders);
     }
 }

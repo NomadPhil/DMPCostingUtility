@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DMPCostingUtility")]
+[assembly: AssemblyTitle("DMPCostingUtilityTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DMPCostingUtility")]
+[assembly: AssemblyProduct("DMPCostingUtilityTests")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,10 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("659cea9e-2ac3-4417-bc3f-80527ee8c141")]
-
-// Make internal classes visible to testing assemblies
-[assembly: InternalsVisibleTo("DMPCostingUtilityTests")]
+[assembly: Guid("8228f609-1c5a-4496-b9bb-e07d91c89cd2")]
 
 // Version information for an assembly consists of the following four values:
 //

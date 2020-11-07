@@ -13,5 +13,7 @@ namespace DMPCostingUtility
         public int NumberOfProducts;
         [FieldOrder(4), FieldTitle("Cost")]
         public double Cost;
+        [FieldOrder(5), FieldTitle("Order Shipping Amount")]
+        public double OrderShippingAmount;
     }
 }
