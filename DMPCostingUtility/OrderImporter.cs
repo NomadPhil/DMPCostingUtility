@@ -1,5 +1,4 @@
-﻿using System;
-using FileHelpers;
+﻿using FileHelpers;
 
 namespace DMPCostingUtility
 {
@@ -11,15 +10,7 @@ namespace DMPCostingUtility
             var engine = new FileHelperEngine<Order>();
 
             engine.ErrorManager.ErrorMode = ErrorMode.ThrowException;
-            try
-            {
-                engine.ReadFile(fileName);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            
             return engine.ReadFile(fileName);
         }
     }
