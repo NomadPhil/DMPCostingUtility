@@ -51,7 +51,7 @@ namespace DMPCostingUtility
             }
             catch (Exception ex)
             {
-                Console.WriteLine($@"ProcessFiles(): Exception raised whilst processing file.", ex);
+                Console.WriteLine($@"ProcessFiles(): Exception raised whilst processing file. {ex}", ex);
             }
 
             return processedFiles;
