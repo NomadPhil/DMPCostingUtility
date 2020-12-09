@@ -106,7 +106,7 @@ namespace DMPCostingUtility
             }
         }
 
-        public int ProcessFile(string validFile)
+        private void ProcessFile(string validFile)
         {
             // Import orders              
             Order[] importRecords = _orderImporter.ImportFile(validFile);
@@ -114,8 +114,6 @@ namespace DMPCostingUtility
             CostedOrder[] costed = _orderCoster.ProcessOrders(importRecords);
 
             _costedOrderExporter.ExportCosted(costed, Path.GetFileName(validFile));
-
-            return costed.Length;
         }
     }
 }
